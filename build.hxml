@@ -14,6 +14,11 @@
 -dce std
 --each
 
+-cp test
+-x TestMain
+
+--next
+
 -main org.tmdb.Main
 -js output/tmdb-search.js
 -debug
