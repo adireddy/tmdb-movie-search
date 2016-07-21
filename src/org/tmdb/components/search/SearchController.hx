@@ -1,5 +1,6 @@
 package org.tmdb.components.search;
 
+import js.Browser;
 import externs.tmdb.TMDb;
 import org.tmdb.model.Model;
 
@@ -40,7 +41,7 @@ class SearchController implements IComponentController {
 	}
 
 	function _onError(response:Dynamic) {
-
+		Browser.console.warn(response);
 	}
 
 	public function reset() {

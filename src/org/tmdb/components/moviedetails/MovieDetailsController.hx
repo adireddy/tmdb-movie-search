@@ -1,5 +1,6 @@
 package org.tmdb.components.moviedetails;
 
+import js.Browser;
 import bindx.Bind;
 import org.tmdb.model.Model;
 import externs.tmdb.TMDb;
@@ -39,7 +40,7 @@ class MovieDetailsController implements IComponentController {
 	}
 
 	function _onError(response:Dynamic) {
-
+		Browser.console.warn(response);
 	}
 
 	public function reset() {

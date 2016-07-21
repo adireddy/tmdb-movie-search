@@ -33,9 +33,11 @@ class SearchView implements IComponentView {
 	function _search() {
 		if (_delay != null) _delay.stop();
 		showProgress();
-		_delay = Timer.delay(function() {
-			search.dispatch(_searchElement.value);
-		}, 1000);
+		_delay = Timer.delay(_delaySearch, 1000);
+	}
+
+	inline function _delaySearch() {
+		search.dispatch(_searchElement.value);
 	}
 
 	function _onSelect(evt:Dynamic) {
