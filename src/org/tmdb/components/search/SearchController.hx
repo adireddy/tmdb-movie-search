@@ -8,6 +8,7 @@ using StringTools;
 class SearchController implements IComponentController {
 
 	@inject public var model:Model;
+	@inject public var componentModel:SearchModel;
 	@inject public var view:SearchView;
 
 	public function new() {}
