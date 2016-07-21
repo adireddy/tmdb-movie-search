@@ -41,6 +41,9 @@ class SearchView implements IComponentView {
 			showProgress();
 			_delay = Timer.delay(_delaySearch, 1000);
 		}
+		else {
+			hideProgress();
+		}
 	}
 
 	inline function _delaySearch() {

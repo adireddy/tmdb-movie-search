@@ -18,6 +18,7 @@ class SearchModel implements IComponentModel {
 
 	public function processSearchResults(response:Dynamic) {
 		var res = Json.parse(response);
+		movies = new Map();
 		for (m in Reflect.fields(res.results)) {
 			var movie = Reflect.field(res.results, m);
 			movies.set(movie.id, movie);
@@ -25,6 +26,6 @@ class SearchModel implements IComponentModel {
 	}
 
 	public function reset() {
-		movies = null;
+		init();
 	}
 }
