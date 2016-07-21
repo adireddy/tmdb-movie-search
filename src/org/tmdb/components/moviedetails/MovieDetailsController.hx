@@ -15,7 +15,7 @@ class MovieDetailsController implements IComponentController {
 		Bind.bind(model.selectedMovie, _getMovieDetails);
 	}
 
-	function _onGetMovieDetails(oldMovie:Int, newMovie:Int) {
+	function _getMovieDetails(oldMovie:Int, newMovie:Int) {
 		TMDb.movies.getById({ id:newMovie }, _onMovieDetailsSuccess, _onError);
 	}
 
