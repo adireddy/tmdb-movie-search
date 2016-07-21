@@ -17,9 +17,9 @@ class MovieDetailsView  implements IComponentView {
 			cast(Browser.document.getElementById("moviePoster"), ImageElement).src = posterPath;
 		}
 		Browser.document.getElementById("movieName").innerText = title;
-		Browser.document.getElementById("releaseDate").innerText = releaseDate;
+		Browser.document.getElementById("releaseDate").innerHTML = "<i class='fa fa-calendar'> </i> " + releaseDate;
 		Browser.document.getElementById("movieDescription").innerText = overview;
-		Browser.document.getElementById("movieRating").innerHTML = "<i class='fa fa-star'></i> " + rating;
+		Browser.document.getElementById("movieRating").innerHTML = "<i class='fa fa-star'> </i> " + rating;
 		_movieElement.style.position = "relative";
 		_movieElement.style.visibility = "visible";
 	}

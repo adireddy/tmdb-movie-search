@@ -18,6 +18,7 @@ class SearchController implements IComponentController {
 	}
 
 	function _onGetMovieDetails(val:String) {
+		model.reset();
 		model.selectedMovie = Std.parseInt(val);
 		view.clearResults();
 	}

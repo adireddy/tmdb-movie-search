@@ -19,7 +19,9 @@ class MovieDetailsController implements IComponentController {
 	}
 
 	function _hideMovieDetails(oldString:String, newString:String) {
-		view.hideMovieDetails();
+		if (newString != null) {
+			view.hideMovieDetails();
+		}
 	}
 
 	function _getMovieDetails(oldMovie:Int, newMovie:Int) {
