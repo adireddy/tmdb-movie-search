@@ -29,5 +29,8 @@ class MovieDetailsController implements IComponentController {
 
 	}
 
-	public function reset() {}
+	public function reset() {
+		componentModel.reset();
+		view.reset();
+	}
 }

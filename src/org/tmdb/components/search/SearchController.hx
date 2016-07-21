@@ -14,7 +14,12 @@ class SearchController implements IComponentController {
 	public function new() {}
 
 	public function init() {
+		view.getMovieDetails.add(_onGetMovieDetails);
+		view.search.add(_onSearch);
+	}
 
+	function _onGetMovieDetails(val:String) {
+		model.selectedMovie = Std.parseInt(val);
 	}
 
 	function _onSearch(val:String) {
@@ -34,5 +39,8 @@ class SearchController implements IComponentController {
 
 	}
 
-	public function reset() {}
+	public function reset() {
+		componentModel.reset();
+		view.reset();
+	}
 }
