@@ -24,7 +24,10 @@ class SearchController implements IComponentController {
 	}
 
 	function _onSearchSuccess(response:Dynamic) {
-
+		componentModel.processSearchResults(response);
+		for (movie in componentModel.movies) {
+			//set the view
+		}
 	}
 
 	function _onError(response:Dynamic) {

@@ -7,6 +7,7 @@ import externs.tmdb.TMDb;
 class MovieDetailsController implements IComponentController {
 
 	@inject public var model:Model;
+	@inject public var componentModel:MovieDetailsModel;
 	@inject public var view:MovieDetailsView;
 
 	public function new() {}
@@ -20,7 +21,8 @@ class MovieDetailsController implements IComponentController {
 	}
 
 	function _onMovieDetailsSuccess(response:Dynamic) {
-
+		componentModel.processMovieDetails(response);
+		//set view
 	}
 
 	function _onError(response:Dynamic) {
