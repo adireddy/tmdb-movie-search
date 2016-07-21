@@ -13,16 +13,29 @@ class MovieDetailsController implements IComponentController {
 	public function new() {}
 
 	public function init() {
+		Bind.bind(model.searchString, _hideMovieDetails);
 		Bind.bind(model.selectedMovie, _getMovieDetails);
 	}
 
+	function _hideMovieDetails(oldString:String, newString:String) {
+		view.hideMovieDetails();
+	}
+
 	function _getMovieDetails(oldMovie:Int, newMovie:Int) {
-		TMDb.movies.getById({ id:newMovie }, _onMovieDetailsSuccess, _onError);
+		if (newMovie > -1) {
+			TMDb.movies.getById({ id:newMovie }, _onMovieDetailsSuccess, _onError);
+		}
 	}
 
 	function _onMovieDetailsSuccess(response:Dynamic) {
 		componentModel.processMovieDetails(response);
-		//set view
+		view.showMovieDetails(
+			componentModel.posterPath,
+			componentModel.title,
+			componentModel.releaseDate,
+			componentModel.overview,
+			componentModel.rating
+		);
 	}
 
 	function _onError(response:Dynamic) {
