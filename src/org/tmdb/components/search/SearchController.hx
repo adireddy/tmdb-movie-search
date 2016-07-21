@@ -4,8 +4,6 @@ import js.Browser;
 import externs.tmdb.TMDb;
 import org.tmdb.model.Model;
 
-using StringTools;
-
 class SearchController implements IComponentController {
 
 	@inject public var model:Model;
@@ -25,10 +23,8 @@ class SearchController implements IComponentController {
 	}
 
 	function _onSearch(val:String) {
-		if (val.trim() != "") {
-			model.searchString = val;
-			TMDb.search.getMovie({query:val}, _onSearchSuccess, _onError);
-		}
+		model.searchString = val;
+		TMDb.search.getMovie({query:val}, _onSearchSuccess, _onError);
 	}
 
 	function _onSearchSuccess(response:Dynamic) {

@@ -8,6 +8,8 @@ import js.html.Element;
 import js.html.InputElement;
 import msignal.Signal.Signal1;
 
+using StringTools;
+
 class SearchView implements IComponentView {
 
 	public var search:Signal1<String>;
@@ -18,6 +20,7 @@ class SearchView implements IComponentView {
 	var _progressElement:Element;
 
 	var _delay:Timer;
+	var _searchString:String;
 
 	public function new() {
 		search = new Signal1(String);
@@ -27,17 +30,21 @@ class SearchView implements IComponentView {
 		_searchElement = cast Browser.document.getElementById("search");
 		_resultsElement = cast Browser.document.getElementById("results");
 
+		_searchString = "";
 		_searchElement.onkeyup = _search;
 	}
 
 	function _search() {
 		if (_delay != null) _delay.stop();
-		showProgress();
-		_delay = Timer.delay(_delaySearch, 1000);
+		_searchString = _searchElement.value.trim();
+		if (_searchString != "") {
+			showProgress();
+			_delay = Timer.delay(_delaySearch, 1000);
+		}
 	}
 
 	inline function _delaySearch() {
-		search.dispatch(_searchElement.value);
+		search.dispatch(_searchString);
 	}
 
 	function _onSelect(evt:Dynamic) {
@@ -67,6 +74,7 @@ class SearchView implements IComponentView {
 	}
 
 	public function reset() {
+		_searchString = "";
 		_searchElement.value = "";
 		_progressElement.style.visibility = "hidden";
 	}
