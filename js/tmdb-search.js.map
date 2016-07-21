@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"tmdb-search.js",
+"sourceRoot":"file:///",
+"sources":["/projects/tmdb-movie-search/src/org/themoviedb/Main.hx"],
+"sourcesContent":["package org.themoviedb;\n\nclass Main {\n\n\tpublic function new() {\n\n\t}\n\n\tstatic function main() {\n\t\tnew Main();\n\t}\n}"],
+"names":[],
+"mappings":";sBAIO,XAAe;;2BAIf,hBACN;;;;;;"
+}

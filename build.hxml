@@ -1,0 +1,20 @@
+-cmd haxelib newrepo
+-cmd haxelib install compiletime
+-cmd haxelib install minject
+-cmd haxelib install msignal
+-cmd haxelib install bindx2
+
+--next
+
+-cp src
+-lib compiletime
+-lib minject
+-lib msignal
+-lib bindx2
+-dce std
+--each
+
+-main org.themoviedb.Main
+-js js/tmdb-search.js
+-debug
+-D source-map-content
