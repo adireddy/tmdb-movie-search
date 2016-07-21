@@ -1,5 +1,6 @@
 package org.tmdb.components.moviedetails;
 
+import externs.tmdb.TMDb;
 import haxe.Json;
 import org.tmdb.model.Model;
 import org.tmdb.components.IComponentModel;
@@ -7,6 +8,8 @@ import org.tmdb.components.IComponentModel;
 class MovieDetailsModel implements IComponentModel {
 
 	@inject public var model:Model;
+
+	static inline var POSTER_SIZE:String = "w300";
 
 	public var title(default, null):String;
 	public var overview(default, null):String;
@@ -30,7 +33,7 @@ class MovieDetailsModel implements IComponentModel {
 		overview = res.overview;
 		releaseDate = res.release_date;
 		rating = res.vote_average;
-		posterPath = res.poster_path;
+		if (res.poster_path != null) posterPath = TMDb.common.images_uri + POSTER_SIZE + res.poster_path;
 	}
 
 	public function reset() {
