@@ -14,7 +14,7 @@
 -dce std
 --each
 
--main org.themoviedb.Main
+-main org.tmdb.Main
 -js js/tmdb-search.js
 -debug
 -D source-map-content

@@ -1,4 +1,4 @@
-package org.themoviedb;
+package org.tmdb;
 
 class Main {
 
