@@ -59,6 +59,8 @@ class Controller {
 			var modelInjector = new Injector();
 			modelInjector.mapValue(Model, model);
 			modelInjector.injectInto(componentModel);
+
+			componentModel.init();
 		}
 
 		if (viewClass != null) {

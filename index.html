@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>TMDb Movie Search</title>
 
-    <script type="text/javascript" src="resources/libs/themoviedb.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/components/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/components/site.min.css">
+
+    <link rel="stylesheet" type="text/css" href="resources/components/icon.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/components/input.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/components/list.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/components/card.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/components/button.min.css">
+
+    <script type="text/javascript" src="libs/themoviedb.min.js"></script>
+
+    <style>
+        body {
+            padding: 1em;
+        }
+
+        .ui.input + .ui.input {
+            margin-left: 1em;
+        }
+    </style>
 
 </head>
 <body>
+<div class="ui one column stackable grid">
+    <div class="column">
+
+        <div class="ui icon input loading">
+            <input id="search" placeholder="Search..." type="text" style="width: 300px">
+            <i id="progress" class="search icon" style="visibility: hidden"></i>
+        </div>
+
+        <div id="results" class="ui link list"/>
+
+    </div>
+
+    <div class="column">
+        <div id="movie" class="ui card" style="visibility: hidden">
+            <div class="image">
+                <img id="moviePoster"/>
+            </div>
+            <div class="content">
+                <a id="movieName" class="header"></a>
+                <div class="meta">
+                    <span id="releaseDate" class="date"></span>
+                </div>
+                <div id="movieDescription" class="description"></div>
+            </div>
+            <div class="extra content">
+                <a id="movieRating"></a>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="output/tmdb-search.js"></script>
 </body>
 </html>
