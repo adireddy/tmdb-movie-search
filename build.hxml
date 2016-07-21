@@ -15,6 +15,6 @@
 --each
 
 -main org.tmdb.Main
--js js/tmdb-search.js
+-js output/tmdb-search.js
 -debug
 -D source-map-content
