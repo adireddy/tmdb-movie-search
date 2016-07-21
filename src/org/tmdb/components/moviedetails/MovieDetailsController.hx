@@ -1,5 +1,6 @@
 package org.tmdb.components.moviedetails;
 
+import bindx.Bind;
 import org.tmdb.model.Model;
 import externs.tmdb.TMDb;
 
@@ -11,11 +12,11 @@ class MovieDetailsController implements IComponentController {
 	public function new() {}
 
 	public function init() {
-
+		Bind.bind(model.selectedMovie, _getMovieDetails);
 	}
 
-	function _onGetMovieDetails(id:Int) {
-		TMDb.movies.getById({ id:id }, _onMovieDetailsSuccess, _onError);
+	function _onGetMovieDetails(oldMovie:Int, newMovie:Int) {
+		TMDb.movies.getById({ id:newMovie }, _onMovieDetailsSuccess, _onError);
 	}
 
 	function _onMovieDetailsSuccess(response:Dynamic) {
@@ -23,7 +24,7 @@ class MovieDetailsController implements IComponentController {
 	}
 
 	function _onError(response:Dynamic) {
-		
+
 	}
 
 	public function reset() {}
