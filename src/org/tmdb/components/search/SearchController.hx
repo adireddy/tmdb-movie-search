@@ -24,14 +24,17 @@ class SearchController implements IComponentController {
 
 	function _onSearch(val:String) {
 		if (val.trim() != "") {
+			model.searchString = val;
 			TMDb.search.getMovie({query:val}, _onSearchSuccess, _onError);
 		}
 	}
 
 	function _onSearchSuccess(response:Dynamic) {
 		componentModel.processSearchResults(response);
+		view.clearResults();
+		view.hideProgress();
 		for (movie in componentModel.movies) {
-			//set the view
+			view.addMovie(movie.id, movie.original_title, movie.release_date);
 		}
 	}
 

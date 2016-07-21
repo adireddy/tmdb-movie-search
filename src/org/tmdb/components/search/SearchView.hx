@@ -1,5 +1,7 @@
 package org.tmdb.components.search;
 
+import js.html.DivElement;
+import js.html.AnchorElement;
 import haxe.Timer;
 import js.Browser;
 import js.html.Element;
@@ -12,6 +14,7 @@ class SearchView implements IComponentView {
 	public var getMovieDetails:Signal1<String>;
 
 	var _searchElement:InputElement;
+	var _resultsElement:DivElement;
 	var _progressElement:Element;
 
 	var _delay:Timer;
@@ -22,6 +25,7 @@ class SearchView implements IComponentView {
 
 		_progressElement = cast Browser.document.getElementById("progress");
 		_searchElement = cast Browser.document.getElementById("search");
+		_resultsElement = cast Browser.document.getElementById("results");
 
 		_searchElement.onkeyup = _search;
 	}
@@ -32,6 +36,24 @@ class SearchView implements IComponentView {
 		_delay = Timer.delay(function() {
 			search.dispatch(_searchElement.value);
 		}, 1000);
+	}
+
+	function _onSelect(evt:Dynamic) {
+		_searchElement.value = evt.target.innerText.split(" (")[0];
+		getMovieDetails.dispatch(evt.target.id);
+	}
+
+	public function addMovie(id:Int, title:String, release:String) {
+		var movie:AnchorElement = Browser.document.createAnchorElement();
+		movie.className = "item";
+		movie.id = "" + id;
+		movie.innerText = title + " (" + release + ")";
+		movie.onclick = _onSelect;
+		_resultsElement.appendChild(movie);
+	}
+
+	public function clearResults() {
+		_resultsElement.innerHTML = "";
 	}
 
 	public function showProgress() {
