@@ -7,7 +7,7 @@ A simple TMDb movie search application
 
 ### How to use
 
-Enter text in the search field to see search results, click on any result to see more details of the movie retrieved from TMDb api.
+Enter text in the search field to see movies related to search text and click on any result to see more details of the movie retrieved from TMDb api.
 
 ### Reference
 
